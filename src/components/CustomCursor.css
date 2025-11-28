@@ -1,0 +1,59 @@
+/* .custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  z-index: 9999;
+} */
+
+/* CustomCursor.css */
+
+.custom-cursor {
+    /* Base Appearance */
+    position: fixed; /* Crucial: ensures it stays on screen regardless of scroll */
+    pointer-events: none; /* Essential: allows clicking elements underneath the cursor */
+    z-index: 9999;       /* Ensures it's always on top of everything */
+    
+    /* Shape and Size */
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color, #61DAFB); /* Use your theme color */
+    border-radius: 50%;
+    
+    /* Center the cursor on the actual mouse point */
+    transform: translate(-50%, -50%); 
+
+    /* Smooth Movement (The 'Amazing' part) */
+    transition: 
+        transform 0.1s ease-out, /* Slightly faster transition for position */
+        width 0.3s ease, 
+        height 0.3s ease,
+        background-color 0.3s ease;
+}
+
+/* Optional: Secondary cursor for a 'trail' or 'dot' effect */
+.custom-cursor::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* CustomCursor.css */
+
+/* Scaling effect when hovering over a link or button */
+.custom-cursor.expanded {
+    width: 40px; 
+    height: 40px; 
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white ring */
+    border: 1px solid var(--primary-color, #61DAFB); /* Border highlight */
+}

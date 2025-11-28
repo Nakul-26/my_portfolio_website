@@ -1,0 +1,8 @@
+body.light-mode {
+  --primary-color: #F0F2F5;
+  --secondary-color: #FFFFFF;
+  --accent-color: #007BFF;
+  --light-color: #0A192F;
+  --dark-color: #F0F2F5;
+  --text-color: #333333;
+}

@@ -1,0 +1,15 @@
+
+.footer-icon-hover {
+    color: var(--text-color) !important;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.footer-icon-hover:hover {
+    color: var(--accent-color) !important;
+    transform: translateY(-3px) scale(1.1);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
