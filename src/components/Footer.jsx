@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { FaGithub, FaLinkedin, FaTwitter, FaFileDownload } from 'react-icons/fa';
 import './Footer.css';
 
 const socialLinks = [
@@ -17,9 +17,23 @@ const Footer = () => {
             <Container>
                 <Row className="justify-content-center">
                     <Col md={10} className="text-center">
+                        <h4 className="mb-3">Ready to build something great?</h4>
                         <p className="lead mb-4">
-                            Ready to build something great? Let's connect!
+                            Let's connect and turn your ideas into reality.
                         </p>
+                        <div className="mb-4">
+                            <Button
+                                variant="primary"
+                                href="/resume.pdf" // Assuming resume.pdf is in the public folder
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                size="lg"
+                                className="me-3"
+                            >
+                                <FaFileDownload className="me-2" />
+                                Download Resume
+                            </Button>
+                        </div>
                         <hr className="bg-secondary mb-4 mx-auto" style={{ width: '50%' }} />
                         <div className="mb-4">
                             {socialLinks.map((link, index) => (
@@ -29,7 +43,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title={`Connect on ${link.name}`}
-                                    className="mx-3 footer-icon-hover" 
+                                    className="mx-3 footer-icon" 
                                 >
                                     <link.icon size={30} /> 
                                 </a>

@@ -1,15 +1,17 @@
-
-.footer-icon-hover {
-    color: var(--text-color) !important;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    display: inline-block;
+.footer-icon {
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    color: var(--bs-gray-600);
 }
 
-.footer-icon-hover:hover {
-    color: var(--accent-color) !important;
-    transform: translateY(-3px) scale(1.1);
+.footer-icon:hover {
+    transform: translateY(-3px);
+    color: var(--bs-primary);
 }
 
-.bg-secondary {
-    background-color: var(--secondary-color) !important;
+.dark-mode .footer-icon {
+    color: var(--bs-gray-400);
+}
+
+.dark-mode .footer-icon:hover {
+    color: var(--bs-primary);
 }

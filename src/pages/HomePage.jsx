@@ -24,19 +24,19 @@ const itemVariants = {
     visible: { opacity: 1, y: 0 }
 };
 
-const HomePage = () => {
+const HomePage = ({ theme }) => {
     const particlesInit = async (main) => {
         await loadFull(main);
     };
 
     const particlesOptions = {
         background: {
-            color: { value: "#0A192F" },
+            color: { value: theme === 'dark' ? '#0A192F' : '#F0F0F0' },
         },
         particles: {
-            color: { value: "#64FFDA" }, 
+            color: { value: theme === 'dark' ? '#64FFDA' : '#333333' }, 
             links: {
-                color: "#64FFDA",
+                color: theme === 'dark' ? '#64FFDA' : '#333333',
                 distance: 150,
                 enable: true,
                 opacity: 0.2,

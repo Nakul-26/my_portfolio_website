@@ -32,17 +32,8 @@ const Header = ({ toggleTheme }) => {
             <Nav.Link as={Link} to="/about" href="/about">
               About
             </Nav.Link>
-            <Nav.Link as={Link} to="/education" href="/education">
-              Education
-            </Nav.Link>
-            <Nav.Link as={Link} to="/skills" href="/skills">
-              Skills
-            </Nav.Link>
             <Nav.Link as={Link} to="/projects" href="/projects">
               Projects
-            </Nav.Link>
-            <Nav.Link as={Link} to="/achievements" href="/achievements">
-              Achievements
             </Nav.Link>
             <Nav.Link as={Link} to="/contact" href="/contact">
               Contact
