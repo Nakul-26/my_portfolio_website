@@ -34,7 +34,7 @@ const Footer = () => {
                                 Download Resume
                             </Button>
                         </div>
-                        <hr className="bg-secondary mb-4 mx-auto" style={{ width: '50%' }} />
+                        <hr className="bg-secondary mb-4 mx-auto hr-footer" />
                         <div className="mb-4">
                             {socialLinks.map((link, index) => (
                                 <a 

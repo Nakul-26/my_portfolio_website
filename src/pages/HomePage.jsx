@@ -5,6 +5,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { motion } from 'framer-motion';
 import profileImage from '../assets/profile.jpg';
+import './HomePage.css';
 
 const heroVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -24,19 +25,19 @@ const itemVariants = {
     visible: { opacity: 1, y: 0 }
 };
 
-const HomePage = ({ theme }) => {
+const HomePage = () => {
     const particlesInit = async (main) => {
         await loadFull(main);
     };
 
     const particlesOptions = {
         background: {
-            color: { value: theme === 'dark' ? '#0A192F' : '#F0F0F0' },
+            color: { value: 'transparent' },
         },
         particles: {
-            color: { value: theme === 'dark' ? '#64FFDA' : '#333333' }, 
+            color: { value: 'var(--particles-color)' }, 
             links: {
-                color: theme === 'dark' ? '#64FFDA' : '#333333',
+                color: 'var(--particles-color)',
                 distance: 150,
                 enable: true,
                 opacity: 0.2,
@@ -74,20 +75,19 @@ const HomePage = ({ theme }) => {
     };
 
     return (
-        <div style={{ position: 'relative', height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+        <div className="home-page-container">
             <Particles
                 id="tsparticles"
                 init={particlesInit}
                 options={particlesOptions}
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+                className="particles-container"
             />
             
             <motion.div
-                className="w-100"
+                className="w-100 home-page-content"
                 variants={heroVariants}
                 initial="hidden"
                 animate="visible"
-                style={{ position: 'relative', zIndex: 1 }}
             >
                 <Container className="p-5">
                     <Row className="align-items-center">
@@ -97,15 +97,17 @@ const HomePage = ({ theme }) => {
                                     src={profileImage} 
                                     roundedCircle 
                                     fluid 
-                                    className="shadow-lg border border-3 border-info" 
+                                    className="shadow-lg border border-3"
+                                    style={{ borderColor: 'var(--primary)' }}
                                 />
                             </motion.div>
                         </Col>
                         
                         <Col md={8}>
                             <motion.h4 
-                                className="text-info fw-bold mb-1"
+                                className="fw-bold mb-1"
                                 variants={itemVariants}
+                                style={{ color: 'var(--primary)' }}
                             >
                                 Hi, I'm Nakul B
                             </motion.h4>

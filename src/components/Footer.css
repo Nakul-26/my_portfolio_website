@@ -1,17 +1,20 @@
 .footer-icon {
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
-    color: var(--bs-gray-600);
+    color: var(--light-text-muted);
 }
 
 .footer-icon:hover {
     transform: translateY(-3px);
-    color: var(--bs-primary);
+    color: var(--primary);
 }
 
 .dark-mode .footer-icon {
-    color: var(--bs-gray-400);
+    color: var(--dark-text-muted);
 }
 
 .dark-mode .footer-icon:hover {
-    color: var(--bs-primary);
+    color: var(--primary);
+}
+.hr-footer {
+    width: 50%;
 }

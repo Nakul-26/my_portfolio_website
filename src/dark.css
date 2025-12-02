@@ -1,78 +1,71 @@
-/* Simple Dark Theme Overrides */
-
-:root {
-    --dark-bg: #0A192F;
-    --dark-text: #E6F1FF;
-    --dark-card-bg: #172A45;
-    --dark-border: #303C55;
-    --dark-primary: #64FFDA;
-}
+/* Dark Theme Overrides */
 
 .dark-mode {
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
+  background-color: var(--dark-background);
+  color: var(--dark-text-primary);
 }
 
 .dark-mode .card {
-    background-color: var(--dark-card-bg);
-    border-color: var(--dark-border);
-    color: var(--dark-text);
+  background-color: var(--dark-card-background);
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
 }
 
 .dark-mode .form-control {
-    background-color: var(--dark-card-bg);
-    border-color: var(--dark-border);
-    color: var(--dark-text);
+  background-color: var(--dark-card-background);
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
 }
 
 .dark-mode .form-control:focus {
-    background-color: var(--dark-card-bg);
-    border-color: var(--dark-primary);
-    color: var(--dark-text);
-    box-shadow: 0 0 0 0.25rem rgba(100, 255, 218, 0.25);
+  background-color: var(--dark-card-background);
+  border-color: var(--primary);
+  color: var(--dark-text-primary);
+  box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25);
 }
 
 .dark-mode .form-label {
-    color: var(--dark-text);
+  color: var(--dark-text-primary);
 }
 
 .dark-mode .text-muted {
-    color: #8892B0 !important;
+  color: var(--dark-text-muted) !important;
 }
 
 .dark-mode .display-2, .dark-mode .fw-bolder {
-    color: #CCD6F6;
+  color: var(--dark-text-primary);
 }
 
 .dark-mode .lead {
-    color: #A8B2D1;
+  color: var(--dark-text-secondary);
 }
 
 .dark-mode .btn-primary {
-    background-color: var(--dark-primary);
-    border-color: var(--dark-primary);
-    color: var(--dark-bg);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--dark-background);
 }
 
 .dark-mode .btn-outline-primary {
-    border-color: var(--dark-primary);
-    color: var(--dark-primary);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .dark-mode .btn-outline-primary:hover {
-    background-color: var(--dark-primary);
-    color: var(--dark-bg);
+  background-color: var(--primary);
+  color: var(--dark-background);
 }
 
 .dark-mode hr {
-    background-color: var(--dark-border);
+  background-color: var(--dark-border);
 }
 
 .dark-mode .navbar {
-    background-color: rgba(10, 25, 47, 0.85);
-    backdrop-filter: blur(10px);
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
 }
 
 .dark-mode .nav-link {
-    color: var(--dark-text) !important;
+  color: var(--dark-text-primary) !important;
 }
+

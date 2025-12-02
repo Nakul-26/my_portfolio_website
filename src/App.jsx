@@ -29,10 +29,10 @@ function App() {
       <main className="content-wrap py-3">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<AnimatedPage><HomePage theme={theme} /></AnimatedPage>} />
-            <Route path="/about" element={<AnimatedPage><AboutPage theme={theme} /></AnimatedPage>} />
-            <Route path="/projects" element={<AnimatedPage><ProjectsPage theme={theme} /></AnimatedPage>} />
-            <Route path="/contact" element={<AnimatedPage><ContactPage theme={theme} /></AnimatedPage>} />
+            <Route path="/" element={<AnimatedPage><HomePage /></AnimatedPage>} />
+            <Route path="/about" element={<AnimatedPage><AboutPage /></AnimatedPage>} />
+            <Route path="/projects" element={<AnimatedPage><ProjectsPage /></AnimatedPage>} />
+            <Route path="/contact" element={<AnimatedPage><ContactPage /></AnimatedPage>} />
           </Routes>
         </AnimatePresence>
       </main>
