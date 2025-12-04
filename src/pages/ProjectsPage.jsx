@@ -1,37 +1,56 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
-import { FaUnity, FaReact, FaNodeJs, FaDatabase, FaCode, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiMongodb } from 'react-icons/si';
+import { FaUnity, FaReact, FaNodeJs, FaDatabase, FaCode, FaGithub, FaExternalLinkAlt, FaJava, FaPython, FaJs, FaPalette } from 'react-icons/fa';
+import { SiMongodb, SiGo, SiRedis, SiRabbitmq, SiDocker } from 'react-icons/si';
 
 const techIcons = {
   Unity: <FaUnity />,
   'C#': <FaCode />,
+  Paint: <FaPalette />,
   React: <FaReact />,
   'Node.js': <FaNodeJs />,
+  'MERN Stack': <FaReact />,
+  Go: <SiGo />,
+  Redis: <SiRedis />,
+  RabbitMQ: <SiRabbitmq />,
+  Docker: <SiDocker />,
   MongoDB: <SiMongodb />,
-  Database: <FaDatabase />
 };
 
 const initialProjects = [
   {
-    title: "Swordcraft: A 2D RPG Adventure",
+    title: "Unity 2D Game: 'Swordcraft'",
     category: "Game Development",
     imageUrl: "https://via.placeholder.com/400x300.png?text=Swordcraft+Game",
-    technologies: ['Unity', 'C#'],
-    problem: "Solo-developing a 2D RPG required mastering a complete development lifecycle, from game mechanics and asset creation to bug resolution, within the Unity engine.",
-    approach: "Leveraged C# for core gameplay logic, designed and created 2D assets using digital painting tools, and implemented core RPG features like combat, inventory, and dialogue systems.",
-    outcome: "Successfully developed a playable game demo, demonstrating proficiency in C# and the Unity engine. This project honed my skills in problem-solving, asset creation, and end-to-end project management.",
+    technologies: ['Unity', 'C#', 'Paint'],
+    description: "Developed an entire 2D game independently using C#. Handled all aspects including programming, debugging, asset creation, and gameplay design. Created visual assets using Ibis Paint and Paint, using online references for guidance. Gained strong skills in C# scripting, problem-solving, fixing syntax and runtime errors, and improved digital art abilities.",
     githubLink: "#",
     liveLink: "#"
   },
   {
-    title: "Automated Timetable Generator",
+    title: "Automated Timetable Generation",
     category: "Web Application",
     imageUrl: "https://via.placeholder.com/400x300.png?text=Timetable+App",
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    problem: "Manually creating complex academic timetables is time-consuming and prone to errors. The goal was to build a web application to automate this process.",
-    approach: "Designed a MERN stack application with a React frontend for a dynamic user interface. The Node.js/Express.js backend implements a backtracking algorithm to solve scheduling constraints, and MongoDB stores course and schedule data.",
-    outcome: "The application significantly reduces the time needed to create a valid timetable. It served as a strong practical exercise in full-stack development, algorithm design, and database management.",
+    technologies: ['MERN Stack'],
+    description: "Developed a complete web application independently using the MERN stack. Built the frontend in React, backend using Node.js and Express, and used MongoDB for scalable data management. Designed and implemented a backtracking-based algorithm for automated timetable creation. Strengthened full-stack web development skills, including API integration and database handling.",
+    githubLink: "#",
+    liveLink: "#"
+  },
+  {
+    title: "LeetCode Clone",
+    category: "Web Application",
+    imageUrl: "https://via.placeholder.com/400x300.png?text=LeetCode+Clone",
+    technologies: ['React', 'Node.js', 'Go', 'Redis', 'RabbitMQ', 'Docker'],
+    description: "Developing a scalable online coding judge platform inspired by LeetCode, with features for problem management, secure code execution, and result evaluation. Built using a React frontend, Node.js backend, and a Go-based judge service, supported by Redis and RabbitMQ for performance and asynchronous processing. Fully containerized with Docker for modular and production-ready deployment.",
+    githubLink: "#",
+    liveLink: "#"
+  },
+  {
+    title: "Web Application: ERP Application",
+    category: "Web Application",
+    imageUrl: "https://via.placeholder.com/400x300.png?text=ERP+Application",
+    technologies: ['MERN Stack'],
+    description: "Developed a fully responsive frontend for an enterprise resource planning (ERP) system using React. Worked closely with a 3-member development team to design and implement key features and user interfaces. Utilized Git and GitHub for version control and efficient collaboration throughout the development cycle. Successfully deployed the frontend on Vercel, ensuring fast performance, scalability, and production-grade reliability.",
     githubLink: "#",
     liveLink: "#"
   }
@@ -79,14 +98,13 @@ const ProjectsPage = () => {
                 <Card.Title className="fw-bold">{project.title}</Card.Title>
                 <div className="mb-2">
                     {project.technologies.map((tech) => (
-                        <Badge pill bg="secondary" key={tech} className="me-1">{tech}</Badge>
+                        <Badge pill bg="secondary" key={tech} className="me-1">
+                            {techIcons[tech]} {tech}
+                        </Badge>
                     ))}
                 </div>
                 <Card.Text className="mt-2">
-                    <strong>Problem:</strong> {project.problem}
-                </Card.Text>
-                <Card.Text>
-                    <strong>Outcome:</strong> {project.outcome}
+                    {project.description}
                 </Card.Text>
                 <div className="mt-auto pt-3">
                     <Button variant="dark" href={project.githubLink} target="_blank" className="me-2">

@@ -1,90 +1,58 @@
-/* TIMELINE STYLES */
-.timeline {
-    position: relative;
-    padding: 2rem 0;
-    max-width: 800px;
-    margin: 0 auto;
+/* SERVICE CARD STYLES */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.timeline::before {
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+
+/* SKILLS CARD STYLES */
+.skills-card {
+    background-color: var(--light-card-background);
+    border: 1px solid var(--light-border);
+}
+
+.dark-mode .skills-card {
+    background-color: var(--dark-card-background);
+    border: 1px solid var(--dark-border);
+}
+
+.skill-icon {
+    color: var(--primary);
+}
+
+/* JOURNEY TIMELINE STYLES */
+.journey-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.journey-timeline::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 40px;
     transform: translateX(-50%);
     height: 100%;
     width: 2px;
     background-color: var(--primary);
 }
 
-.timeline-item {
-    padding: 1rem 2rem;
+.journey-card {
     position: relative;
-    width: 50%;
+    margin-left: 60px;
 }
 
-.timeline-item.left {
-    left: 0;
-    padding-right: 3rem;
-}
-
-.timeline-item.right {
-    left: 50%;
-    padding-left: 3rem;
-}
-
-.timeline-content {
-    padding: 1.5rem;
-    background-color: var(--light-card-background);
-    border-radius: 8px;
-    position: relative;
-    border: 1px solid var(--light-border);
-}
-
-.dark-mode .timeline-content {
-    background-color: var(--dark-card-background);
-    border: 1px solid var(--dark-border);
-}
-
-
-.timeline-item.left .timeline-content::after, .timeline-item.right .timeline-content::after {
-    content: " ";
-    height: 0;
+.journey-icon-wrapper {
     position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    border: medium solid var(--light-card-background);
-}
-
-.dark-mode .timeline-item.left .timeline-content::after, .dark-mode .timeline-item.right .timeline-content::after {
-    border-color: transparent transparent transparent var(--dark-card-background);
-}
-
-.timeline-item.left .timeline-content::after {
-    right: -10px;
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent var(--light-card-background);
-}
-
-.dark-mode .timeline-item.left .timeline-content::after {
-    border-color: transparent transparent transparent var(--dark-card-background);
-}
-
-.timeline-item.right .timeline-content::after {
-    left: -10px;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent var(--light-card-background) transparent transparent;
-}
-
-.dark-mode .timeline-item.right .timeline-content::after {
-    border-color: transparent var(--dark-card-background) transparent transparent;
-}
-
-.timeline-icon {
-    position: absolute;
-    top: 20px;
-    z-index: 100;
+    left: -40px;
+    top: 1.2rem;
+    transform: translateX(-50%);
+    z-index: 10;
     width: 40px;
     height: 40px;
     background-color: var(--primary);
@@ -95,60 +63,21 @@
     justify-content: center;
 }
 
-.timeline-item.left .timeline-icon {
-    right: -20px;
-}
-
-.timeline-item.right .timeline-icon {
-    left: -20px;
-}
-
-.timeline-date {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-}
-
-/* SKILL BADGE */
-.skill-badge {
-    font-size: 0.9rem;
-    display: inline-flex;
+/* HOBBY CARD STYLES */
+.hobby-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 1000px !; 
+    transition: transform 0.2s ease;
 }
 
-/* RESPONSIVENESS */
-@media screen and (max-width: 768px) {
-    .timeline::before {
-        left: 20px;
-    }
+.hobby-card:hover {
+    transform: scale(1.05);
+}
 
-    .timeline-item {
-        width: 100%;
-        padding-left: 50px;
-        padding-right: 10px;
-    }
-
-    .timeline-item.right {
-        left: 0%;
-        padding-left: 50px;
-    }
-
-    .timeline-icon {
-        left: 0;
-    }
-
-    .timeline-item.left .timeline-icon, .timeline-item.right .timeline-icon {
-        left: 0px;
-    }
-    
-    .timeline-item.left .timeline-content::after, .timeline-item.right .timeline-content::after {
-        left: -10px;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent var(--light-card-background) transparent transparent;
-    }
-
-    .dark-mode .timeline-item.left .timeline-content::after, .dark-mode .timeline-item.right .timeline-content::after {
-        border-color: transparent var(--dark-card-background) transparent transparent;
-    }
+.hobby-icon {
+    font-size: 2rem;
 }

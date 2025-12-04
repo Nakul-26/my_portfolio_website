@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaGithub, FaLinkedin, FaTwitter, FaFileDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
+import resume from '../assets/NAKULB_1BY23CS132.pdf';
 import './Footer.css';
 
 const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/nakulb24' },
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/nakul-b-629676238/' },
-    { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/nakulb24' },
+    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/nakulb26' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/nakul-b-a477b7294/' },
 ];
 
 const Footer = () => {
@@ -24,7 +24,7 @@ const Footer = () => {
                         <div className="mb-4">
                             <Button
                                 variant="primary"
-                                href="/resume.pdf" // Assuming resume.pdf is in the public folder
+                                href={resume}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 size="lg"

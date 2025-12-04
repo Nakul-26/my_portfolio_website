@@ -123,7 +123,7 @@ const HomePage = () => {
                                 className="lead mb-4"
                                 variants={itemVariants}
                             >
-                                Building scalable web applications with a focus on **performance** and **clean architecture** using React and Node.js.
+                                Fast-learning and motivated software developer with strong coding, teamwork, and time-management skills.
                             </motion.p>
                             
                             <motion.div variants={itemVariants}>

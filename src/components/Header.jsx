@@ -40,14 +40,11 @@ const Header = ({ toggleTheme }) => {
             </Nav.Link>
           </Nav>
           <Nav className="ms-auto">
-            <Nav.Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <Nav.Link href="https://github.com/nakulb26" target="_blank" rel="noopener noreferrer">
               <FaGithub size={20} />
             </Nav.Link>
-            <Nav.Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <Nav.Link href="https://www.linkedin.com/in/nakul-b-a477b7294/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin size={20} />
-            </Nav.Link>
-            <Nav.Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FaTwitter size={20} />
             </Nav.Link>
             <Form.Check 
               type="switch"
