@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Particles from "react-tsparticles"; 
 import { loadFull } from "tsparticles";
 import { motion } from 'framer-motion';
-import ReactTypingEffect from 'react-typing-effect';
 import profileImage from '../assets/profile.jpg';
 import cv from '../assets/NAKULB_1BY23CS132.pdf';
 import './HomePage.css';
@@ -26,6 +25,42 @@ const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
+
+const TypingEffect = ({ text, speed, eraseSpeed, eraseDelay, typingDelay }) => {
+    const [displayedText, setDisplayedText] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+
+    useEffect(() => {
+        const handleTyping = () => {
+            const i = loopNum % text.length;
+            const fullText = text[i];
+
+            setDisplayedText(
+                isDeleting
+                    ? fullText.substring(0, displayedText.length - 1)
+                    : fullText.substring(0, displayedText.length + 1)
+            );
+
+            if (!isDeleting && displayedText === fullText) {
+                setTimeout(() => setIsDeleting(true), eraseDelay);
+            } else if (isDeleting && displayedText === '') {
+                setIsDeleting(false);
+                setLoopNum(loopNum + 1);
+            }
+        };
+
+        const timer = setTimeout(
+            handleTyping,
+            isDeleting ? eraseSpeed : speed
+        );
+
+        return () => clearTimeout(timer);
+    }, [displayedText, isDeleting, loopNum, text, speed, eraseSpeed, eraseDelay]);
+
+    return <span className="typing-effect">{displayedText}</span>;
+};
+
 
 const HomePage = () => {
     const particlesInit = async (main) => {
@@ -113,13 +148,12 @@ const HomePage = () => {
                             </motion.h1>
 
                             <motion.div variants={itemVariants} className="mb-4">
-                                <ReactTypingEffect
+                                <TypingEffect
                                     text={["Software Developer", "Full Stack Engineer", "Problem Solver"]}
                                     speed={100}
                                     eraseSpeed={50}
                                     eraseDelay={2000}
                                     typingDelay={500}
-                                    className="typing-effect"
                                 />
                             </motion.div>
 
