@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
-import resume from '../assets/NAKULB_1BY23CS132.pdf';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const socialLinks = [
@@ -13,47 +13,57 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="pt-5 pb-3">
+        <footer className="site-footer">
             <Container>
-                <Row className="justify-content-center">
-                    <Col md={10} className="text-center">
-                        <h4 className="mb-3">Ready to build something great?</h4>
-                        <p className="lead mb-4">
-                            Let's connect and turn your ideas into reality.
+                <Row>
+                    <Col md={4} className="footer-about mb-4 mb-md-0">
+                        <h5>
+                            <FaCode className="me-2" />
+                            Nakul B's Portfolio
+                        </h5>
+                        <p>
+                            A passionate and creative developer focused on building beautiful and functional web applications.
                         </p>
-                        <div className="mb-4">
-                            <Button
-                                variant="primary"
-                                href={resume}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                size="lg"
-                                className="me-3"
-                            >
-                                <FaFileDownload className="me-2" />
-                                Download Resume
-                            </Button>
-                        </div>
-                        <hr className="bg-secondary mb-4 mx-auto hr-footer" />
-                        <div className="mb-4">
+                    </Col>
+                    
+                    <Col md={{ span: 2, offset: 1 }} sm={6} xs={6} className="footer-links mb-4 mb-md-0">
+                        <h6>Pages</h6>
+                        <ul className="list-unstyled">
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/about">About</Link></li>
+                            <li><Link to="/projects">Projects</Link></li>
+                            <li><Link to="/contact">Contact</Link></li>
+                        </ul>
+                    </Col>
+
+                    <Col md={2} sm={6} xs={6} className="footer-links mb-4 mb-md-0">
+                        <h6>Contact</h6>
+                        <ul className="list-unstyled">
+                            <li><a href="mailto:nakulb2605@gmail.com"><FaEnvelope className="me-2" />Email</a></li>
+                        </ul>
+                    </Col>
+
+                    <Col md={3} className="footer-social">
+                        <h6>Follow Me</h6>
+                        <div className="d-flex">
                             {socialLinks.map((link, index) => (
-                                <a 
+                                <a
                                     key={index}
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title={`Connect on ${link.name}`}
-                                    className="mx-3 footer-icon" 
+                                    className="social-icon"
                                 >
-                                    <link.icon size={30} /> 
+                                    <link.icon size={28} />
                                 </a>
                             ))}
                         </div>
-                        <p className="small text-muted mb-0">
-                            &copy; {currentYear} Nakul B. Built with React, ❤️, and lots of caffeine.
-                        </p>
                     </Col>
                 </Row>
+                <div className="footer-bottom text-center pt-4 mt-4">
+                    <p className="small mb-0">&copy; {currentYear} Nakul B. All Rights Reserved.</p>
+                </div>
             </Container>
         </footer>
     );
