@@ -8,6 +8,7 @@ import { FaJava, FaPython, FaJs, FaReact, FaNodeJs, FaGit, FaGithub, FaDocker } 
 import { SiMongodb, SiRedis } from 'react-icons/si';
 import profileImage from '../assets/profile.jpg';
 import cv from '../assets/NAKULB_1BY23CS132.pdf';
+import Footer from '../components/Footer';
 import './HomePage.css';
 
 const heroVariants = {
@@ -223,6 +224,7 @@ const HomePage = () => {
                         </Row>
                     </Container>
                 </motion.div>
+                <Footer />
             </div>
         </div>
     );
