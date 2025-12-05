@@ -1,30 +1,41 @@
 .home-page-container {
-    position: relative;
     height: 100vh;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--background-color);
+    position: relative;
+}
+
+.scrollable-content {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
 }
 
 .particles-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: -1;
 }
 
-.home-page-content {
+.home-page-content,
+.skills-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
     position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.1);
+    scroll-snap-align: start;
+}
+
+.home-page-content .container-fluid {
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     max-width: 900px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
@@ -34,4 +45,23 @@
     font-weight: bold;
     color: var(--primary);
     height: 80px;
+}
+
+.skills-section {
+    background-color: var(--background-color-alt);
+}
+
+.skills-section h2 {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.skill-item {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--text-color);
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    color: var(--primary);
 }

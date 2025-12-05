@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Particles from "react-tsparticles"; 
+import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { motion } from 'framer-motion';
+import { FaJava, FaPython, FaJs, FaReact, FaNodeJs, FaGit, FaGithub, FaDocker } from 'react-icons/fa';
+import { SiMongodb, SiRedis } from 'react-icons/si';
 import profileImage from '../assets/profile.jpg';
 import cv from '../assets/NAKULB_1BY23CS132.pdf';
 import './HomePage.css';
 
 const heroVariants = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-        opacity: 1, 
+    visible: {
+        opacity: 1,
         scale: 1,
-        transition: { 
+        transition: {
             duration: 0.8,
             delay: 0.2,
-            staggerChildren: 0.3 
-        } 
+            staggerChildren: 0.3
+        }
     },
 };
 
@@ -25,6 +27,19 @@ const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
+
+const skills = [
+    { name: "Java", icon: <FaJava size={50} /> },
+    { name: "Python", icon: <FaPython size={50} /> },
+    { name: "JavaScript", icon: <FaJs size={50} /> },
+    { name: "React", icon: <FaReact size={50} /> },
+    { name: "Node.js", icon: <FaNodeJs size={50} /> },
+    { name: "MongoDB", icon: <SiMongodb size={50} /> },
+    { name: "Git", icon: <FaGit size={50} /> },
+    { name: "GitHub", icon: <FaGithub size={50} /> },
+    { name: "Docker", icon: <FaDocker size={50} /> },
+    { name: "Redis", icon: <SiRedis size={50} /> },
+];
 
 const TypingEffect = ({ text, speed, eraseSpeed, eraseDelay, typingDelay }) => {
     const [displayedText, setDisplayedText] = useState('');
@@ -72,7 +87,7 @@ const HomePage = () => {
             color: { value: 'transparent' },
         },
         particles: {
-            color: { value: 'var(--text-color)' }, 
+            color: { value: 'var(--text-color)' },
             links: {
                 color: 'var(--text-color)',
                 distance: 150,
@@ -119,73 +134,96 @@ const HomePage = () => {
                 options={particlesOptions}
                 className="particles-container"
             />
-            
-            <motion.div
-                className="home-page-content"
-                variants={heroVariants}
-                initial="hidden"
-                animate="visible"
-            >
-                <Container fluid>
-                    <Row className="align-items-center text-center">
-                        <Col>
-                            <motion.div variants={itemVariants} className="mb-4">
-                                <Image 
-                                    src={profileImage} 
-                                    roundedCircle 
-                                    width={150}
-                                    height={150}
-                                    className="shadow-lg border border-4"
-                                    style={{ borderColor: 'var(--primary)' }}
-                                />
-                            </motion.div>
-                            
-                            <motion.h1 
-                                className="display-4 fw-bold mb-3"
-                                variants={itemVariants}
-                            >
-                                Hey, I'm <span style={{ color: 'var(--primary)'}}>Nakul B</span>
-                            </motion.h1>
+            <div className="scrollable-content">
+                <motion.div
+                    className="home-page-content"
+                    variants={heroVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <Container fluid>
+                        <Row className="align-items-center text-center">
+                            <Col>
+                                <motion.div variants={itemVariants} className="mb-4">
+                                    <Image
+                                        src={profileImage}
+                                        roundedCircle
+                                        width={150}
+                                        height={150}
+                                        className="shadow-lg border border-4"
+                                        style={{ borderColor: 'var(--primary)' }}
+                                    />
+                                </motion.div>
 
-                            <motion.div variants={itemVariants} className="mb-4">
-                                <TypingEffect
-                                    text={["Software Developer", "Full Stack Engineer", "Problem Solver"]}
-                                    speed={100}
-                                    eraseSpeed={50}
-                                    eraseDelay={2000}
-                                    typingDelay={500}
-                                />
-                            </motion.div>
+                                <motion.h1
+                                    className="display-4 fw-bold mb-3"
+                                    variants={itemVariants}
+                                >
+                                    Hey, I'm <span style={{ color: 'var(--primary)' }}>Nakul B</span>
+                                </motion.h1>
 
-                            <motion.p 
-                                className="lead mb-4"
-                                variants={itemVariants}
-                                style={{ maxWidth: '600px', margin: '0 auto' }}
-                            >
-                                A passionate and creative developer focused on building beautiful and functional web applications.
-                            </motion.p>
-                            
-                            <motion.div variants={itemVariants} className="d-flex justify-content-center gap-3 mt-4">
-                                <Link to="/contact">
-                                    <Button variant="primary" size="lg">
-                                        Hire Me
-                                    </Button>
-                                </Link>
-                                <a href={cv} download="NakulB_Resume.pdf">
-                                    <Button variant="outline-light" size="lg">
-                                        Download CV
-                                    </Button>
-                                </a>
-                                <Link to="/projects">
-                                    <Button variant="outline-light" size="lg">
-                                        My Work
-                                    </Button>
-                                </Link>
-                            </motion.div>
-                        </Col>
-                    </Row>
-                </Container>
-            </motion.div>
+                                <motion.div variants={itemVariants} className="mb-4">
+                                    <TypingEffect
+                                        text={["Software Developer", "Full Stack Engineer", "Problem Solver"]}
+                                        speed={100}
+                                        eraseSpeed={50}
+                                        eraseDelay={2000}
+                                        typingDelay={500}
+                                    />
+                                </motion.div>
+
+                                <motion.p
+                                    className="lead mb-4"
+                                    variants={itemVariants}
+                                    style={{ maxWidth: '600px', margin: '0 auto' }}
+                                >
+                                    A passionate and creative developer focused on building beautiful and functional web applications.
+                                </motion.p>
+
+                                <motion.div variants={itemVariants} className="d-flex justify-content-center gap-3 mt-4">
+                                    <Link to="/contact">
+                                        <Button variant="primary" size="lg">
+                                            Hire Me
+                                        </Button>
+                                    </Link>
+                                    <a href={cv} download="NakulB_Resume.pdf">
+                                        <Button variant="outline-light" size="lg">
+                                            Download CV
+                                        </Button>
+                                    </a>
+                                    <Link to="/projects">
+                                        <Button variant="outline-light" size="lg">
+                                            My Work
+                                        </Button>
+                                    </Link>
+                                </motion.div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </motion.div>
+
+                <motion.div
+                    className="skills-section"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <Container>
+                        <h2 className="text-center mb-5">My Skills</h2>
+                        <Row className="justify-content-center">
+                            {skills.map((skill, index) => (
+                                <Col key={index} xs={4} md={2} className="text-center mb-4">
+                                    <div className="skill-item">
+                                        {skill.icon}
+                                        <p className="mt-2">{skill.name}</p>
+                                    </div>
+                                </Col>
+                            ))}
+                        </Row>
+                    </Container>
+                </motion.div>
+            </div>
         </div>
     );
 };
