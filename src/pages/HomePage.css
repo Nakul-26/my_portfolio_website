@@ -1,14 +1,10 @@
 .home-page-container {
-    height: 100vh;
-    overflow: hidden;
     position: relative;
 }
 
-.scrollable-content {
-    height: 100vh;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-}
+/* .scrollable-content {
+    /* No longer needed 
+} */
 
 .particles-container {
     position: fixed;
@@ -19,15 +15,18 @@
     z-index: -1;
 }
 
-.home-page-content,
-.skills-section {
+.home-page-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 2rem;
+    padding: 8rem 2rem;
     position: relative;
-    scroll-snap-align: start;
+}
+
+.skills-section {
+    padding: 6rem 2rem;
+    position: relative;
+    background-color: var(--background-color-alt);
 }
 
 .home-page-content .container-fluid {
@@ -45,10 +44,6 @@
     font-weight: bold;
     color: var(--primary);
     height: 80px;
-}
-
-.skills-section {
-    background-color: var(--background-color-alt);
 }
 
 .skills-section h2 {

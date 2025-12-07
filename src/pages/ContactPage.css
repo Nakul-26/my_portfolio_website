@@ -1,0 +1,81 @@
+.contact-page-container {
+    padding: 4rem 0;
+  }
+  
+  .contact-form-section, .contact-info-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .contact-form-section {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .form-control {
+    background-color: rgba(0,0,0,0.2) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: var(--text-color) !important;
+    border-radius: 8px;
+  }
+  
+  .form-control::placeholder {
+    color: rgba(255,255,255,0.5) !important;
+  }
+  
+  .form-control:focus {
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5) !important;
+    border-color: var(--primary) !important;
+  }
+  
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .contact-info-item svg {
+    color: var(--primary);
+    margin-right: 1.5rem;
+  }
+  
+  .contact-info-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+  }
+  
+  .contact-info-item a:hover {
+    color: var(--primary);
+  }
+  
+  .social-icons a {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+  }
+  
+  .submit-btn {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+  
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+  }
+  
+  .emailjs-notice {
+    background-color: rgba(255, 223, 186, 0.1);
+    border-left: 4px solid #ffc107;
+  }
+  

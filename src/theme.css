@@ -1,6 +1,8 @@
 :root {
   --primary: #38bdf8;
+  --primary-rgb: 56, 189, 248;
 
+  /* Light Theme */
   --light-background: #f1f5f9;
   --light-foreground: #0f172a;
   --light-card-background: #ffffff;
@@ -10,11 +12,12 @@
   --light-text-muted: #94a3b8;
   --particles-color: var(--light-text-secondary);
 
-  --dark-background: #0f172a;
+  /* New Dark Theme */
+  --dark-background: #020617;
   --dark-foreground: #f8fafc;
-  --dark-card-background: #1e293b;
-  --dark-border: #334155;
-  --dark-text-primary: #f8fafc;
+  --dark-card-background: #0f172a;
+  --dark-border: #1e293b;
+  --dark-text-primary: #e2e8f0;
   --dark-text-secondary: #94a3b8;
   --dark-text-muted: #64748b;
 }
@@ -22,6 +25,7 @@
 body {
   background-color: var(--light-background);
   color: var(--light-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark-mode {

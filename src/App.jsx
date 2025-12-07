@@ -23,8 +23,6 @@ function App() {
     document.body.className = theme + '-mode';
   }, [theme]);
 
-  const isHomePage = location.pathname === '/';
-
   return (
     <div className="app-container">
       <Header toggleTheme={toggleTheme} />
@@ -38,7 +36,8 @@ function App() {
           </Routes>
         </AnimatePresence>
       </main>
-      {!isHomePage && <Footer />}
+      <hr className='footer-divider' />
+      <Footer />
     </div>
   );
 }

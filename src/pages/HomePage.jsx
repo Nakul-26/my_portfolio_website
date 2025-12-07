@@ -42,7 +42,7 @@ const skills = [
     { name: "Redis", icon: <SiRedis size={50} /> },
 ];
 
-const TypingEffect = ({ text, speed, eraseSpeed, eraseDelay, typingDelay }) => {
+const TypingEffect = ({ text, speed, eraseSpeed, eraseDelay }) => {
     const [displayedText, setDisplayedText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
@@ -135,97 +135,95 @@ const HomePage = () => {
                 options={particlesOptions}
                 className="particles-container"
             />
-            <div className="scrollable-content">
-                <motion.div
-                    className="home-page-content"
-                    variants={heroVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <Container fluid>
-                        <Row className="align-items-center text-center">
-                            <Col>
-                                <motion.div variants={itemVariants} className="mb-4">
-                                    <Image
-                                        src={profileImage}
-                                        roundedCircle
-                                        width={150}
-                                        height={150}
-                                        className="shadow-lg border border-4"
-                                        style={{ borderColor: 'var(--primary)' }}
-                                    />
-                                </motion.div>
+            <motion.div
+                className="home-page-content"
+                variants={heroVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <Container fluid>
+                    <Row className="align-items-center text-center">
+                        <Col>
+                            <motion.div variants={itemVariants} className="mb-4">
+                                <Image
+                                    src={profileImage}
+                                    roundedCircle
+                                    width={150}
+                                    height={150}
+                                    className="shadow-lg border border-4"
+                                    style={{ borderColor: 'var(--primary)' }}
+                                />
+                            </motion.div>
 
-                                <motion.h1
-                                    className="display-4 fw-bold mb-3"
-                                    variants={itemVariants}
-                                >
-                                    Hey, I'm <span style={{ color: 'var(--primary)' }}>Nakul B</span>
-                                </motion.h1>
+                            <motion.h1
+                                className="display-4 fw-bold mb-3"
+                                variants={itemVariants}
+                            >
+                                Hey, I'm <span style={{ color: 'var(--primary)' }}>Nakul B</span>
+                            </motion.h1>
 
-                                <motion.div variants={itemVariants} className="mb-4">
-                                    <TypingEffect
-                                        text={["Software Developer", "Full Stack Engineer", "Problem Solver"]}
-                                        speed={100}
-                                        eraseSpeed={50}
-                                        eraseDelay={2000}
-                                        typingDelay={500}
-                                    />
-                                </motion.div>
+                            <motion.div variants={itemVariants} className="mb-4">
+                                <TypingEffect
+                                    text={["Software Developer", "Full Stack Engineer", "Problem Solver"]}
+                                    speed={100}
+                                    eraseSpeed={50}
+                                    eraseDelay={2000}
+                                />
+                            </motion.div>
 
-                                <motion.p
-                                    className="lead mb-4"
-                                    variants={itemVariants}
-                                    style={{ maxWidth: '600px', margin: '0 auto' }}
-                                >
-                                    A passionate and creative developer focused on building beautiful and functional web applications.
-                                </motion.p>
+                            <motion.p
+                                className="lead mb-4"
+                                variants={itemVariants}
+                                style={{ maxWidth: '600px', margin: '0 auto' }}
+                            >
+                                A passionate and creative developer focused on building beautiful and functional web applications.
+                            </motion.p>
 
-                                <motion.div variants={itemVariants} className="d-flex justify-content-center gap-3 mt-4">
-                                    <Link to="/contact">
-                                        <Button variant="primary" size="lg">
-                                            Hire Me
-                                        </Button>
-                                    </Link>
-                                    <a href={cv} download="NakulB_Resume.pdf">
-                                        <Button variant="outline-light" size="lg">
-                                            Download CV
-                                        </Button>
-                                    </a>
-                                    <Link to="/projects">
-                                        <Button variant="outline-light" size="lg">
-                                            My Work
-                                        </Button>
-                                    </Link>
-                                </motion.div>
+                            <motion.div variants={itemVariants} className="d-flex justify-content-center gap-3 mt-4">
+                                <Link to="/contact">
+                                    <Button variant="primary" size="lg">
+                                        Hire Me
+                                    </Button>
+                                </Link>
+                                <a href={cv} download="NakulB_Resume.pdf">
+                                    <Button variant="outline-light" size="lg">
+                                        Download CV
+                                    </Button>
+                                </a>
+                                <Link to="/projects">
+                                    <Button variant="outline-light" size="lg">
+                                        My Work
+                                    </Button>
+                                </Link>
+                            </motion.div>
+                        </Col>
+                    </Row>
+                </Container>
+            </motion.div>
+
+            <motion.div
+                className="skills-section"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.8 }}
+            >
+                <Container>
+                    <h2 className="text-center mb-5">My Skills</h2>
+                    <Row className="justify-content-center">
+                        {skills.map((skill, index) => (
+                            <Col key={index} xs={4} md={2} className="text-center mb-4">
+                                <div className="skill-item">
+                                    {skill.icon}
+                                    <p className="mt-2">{skill.name}</p>
+                                </div>
                             </Col>
-                        </Row>
-                    </Container>
-                </motion.div>
-
-                <motion.div
-                    className="skills-section"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <Container>
-                        <h2 className="text-center mb-5">My Skills</h2>
-                        <Row className="justify-content-center">
-                            {skills.map((skill, index) => (
-                                <Col key={index} xs={4} md={2} className="text-center mb-4">
-                                    <div className="skill-item">
-                                        {skill.icon}
-                                        <p className="mt-2">{skill.name}</p>
-                                    </div>
-                                </Col>
-                            ))}
-                        </Row>
-                    </Container>
-                </motion.div>
-                <Footer />
-            </div>
+                        ))}
+                    </Row>
+                </Container>
+            </motion.div>
+            {/* <hr className="footer-divider" />
+            <Footer /> */}
         </div>
     );
 };
