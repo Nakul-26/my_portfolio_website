@@ -89,13 +89,13 @@ const ContactPage = () => {
 
               <h5 className="mb-3">Find me on social media</h5>
               <div className="social-icons mb-4">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Nakul-26" target="_blank" rel="noopener noreferrer">
                       <FaGithub />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/nakul-b-60a3b2290/" target="_blank" rel="noopener noreferrer">
                       <FaLinkedin />
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://twitter.comhttps://x.com/Nakulb137019" target="_blank" rel="noopener noreferrer">
                       <FaTwitter />
                   </a>
               </div>

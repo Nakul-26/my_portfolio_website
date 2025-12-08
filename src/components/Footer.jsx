@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/nakulb26' },
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/nakul-b-a477b7294/' },
+    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Nakul-26' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/nakul-b-60a3b2290/' },
 ];
 
 const Footer = () => {
@@ -39,7 +39,7 @@ const Footer = () => {
                     <Col md={2} sm={6} xs={6} className="footer-links mb-4 mb-md-0">
                         <h6>Contact</h6>
                         <ul className="list-unstyled">
-                            <li><a href="mailto:nakulb2605@gmail.com"><FaEnvelope className="me-2" />Email</a></li>
+                            <li><a href="mailto:nakul123426@gmail.com"><FaEnvelope className="me-2" />Email</a></li>
                         </ul>
                     </Col>
 
