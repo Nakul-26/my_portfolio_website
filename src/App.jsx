@@ -36,7 +36,6 @@ function App() {
           </Routes>
         </AnimatePresence>
       </main>
-      <hr className='footer-divider' />
       <Footer />
     </div>
   );

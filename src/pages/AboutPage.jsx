@@ -1,200 +1,108 @@
 import React from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-import { FaCode, FaReact, FaNodeJs, FaUnity, FaGit, FaGithub, FaAndroid, FaMicrosoft, FaBrain, FaProjectDiagram, FaUserFriends, FaRocket, FaBullseye, FaGraduationCap, FaAward, FaJava, FaPython, FaJs, FaLightbulb } from 'react-icons/fa';
-import profileImage from '../assets/profile.jpg';
-import './AboutPage.css';
-import './HomePage.css'; // For footer-divider style
+import { FiMonitor, FiServer, FiDatabase, FiShield, FiCheckCircle } from 'react-icons/fi';
+// import profileImage from '../assets/image.png';
 
-const services = [
-    {
-        title: 'Frontend Development',
-        description: 'Crafting responsive and dynamic user interfaces with React, ensuring a seamless user experience across all devices.',
-        icon: <FaReact size={40} className="mb-3" />
-    },
-    {
-        title: 'Backend Development',
-        description: 'Building robust and scalable server-side applications with Node.js and Express, with a focus on clean architecture.',
-        icon: <FaNodeJs size={40} className="mb-3" />
-    },
-    {
-        title: 'Game Development',
-        description: 'Bringing creative ideas to life with Unity and C#, from initial concept to a fully playable game.',
-        icon: <FaUnity size={40} className="mb-3" />
-    }
-];
-
-const skills = {
-    "Technical Skills": [
-        { name: 'C/C++', icon: <FaCode /> },
-        { name: 'Java', icon: <FaJava /> },
-        { name: 'Python', icon: <FaPython /> },
-        { name: 'JavaScript', icon: <FaJs /> },
-        { name: 'C#', icon: <FaCode /> },
-        { name: 'React', icon: <FaReact /> },
-        { name: 'Node.js', icon: <FaNodeJs /> },
-        { name: 'MERN Stack', icon: <FaReact /> },
-    ],
-    "Tools & Platforms": [
-        { name: 'Git', icon: <FaGit /> },
-        { name: 'GitHub', icon: <FaGithub /> },
-        { name: 'Android Studio', icon: <FaAndroid /> },
-        { name: 'Unity', icon: <FaUnity /> },
-        { name: 'Visual Studio Code', icon: <FaMicrosoft /> }
-    ],
-    "Core Concepts": [
-        { name: 'Data Structures', icon: <FaBrain /> },
-        { name: 'Algorithms', icon: <FaProjectDiagram /> },
-        { name: 'Databases', icon: <FaCode /> },
-        { name: 'Artificial Intelligence', icon: <FaLightbulb /> }
-    ],
-    "Professional Skills": [
-        { name: 'Problem-Solving', icon: <FaBullseye /> },
-        { name: 'Teamwork', icon: <FaUserFriends /> },
-        { name: 'Adaptability', icon: <FaRocket /> },
-    ],
+const capabilities = {
+  "Frontend Architecture": ['React 19', 'TypeScript', 'Vite', 'Material UI', 'Tailwind CSS'],
+  "Backend & APIs": ['Node.js', 'Express', 'FastAPI', 'REST', 'GraphQL'],
+  "Core Systems": ['Go', 'Python', 'Java', 'C/C++'],
+  "Databases": ['MongoDB', 'Redis', 'PostgreSQL'],
+  "Infrastructure": ['Docker', 'RabbitMQ', 'Cloudinary', 'Git', 'Vercel']
 };
 
-const journey = [
-    {
-        type: 'education',
-        date: 'Expected Graduation: Aug 2027',
-        title: 'Bachelor of Science in Computer Science',
-        subtitle: 'BMSIT, Bangalore, Karnataka',
-        description: 'GPA: 8.6/10.0 | Relevant Coursework: Data Structures, Algorithms, Databases, Artificial Intelligence',
-        icon: <FaGraduationCap />
-    },
-    {
-        type: 'achievement',
-        date: 'Ongoing',
-        title: 'LeetCode: 100 problems solved',
-        description: 'Completed 100 programming problems on LeetCode.',
-        icon: <FaAward />
-    },
-    {
-        type: 'achievement',
-        date: 'Ongoing',
-        title: 'Google ML crash course',
-        description: 'Currently enrolled in the Google ML crash course.',
-        icon: <FaAward />
-    },
-    {
-        type: 'achievement',
-        date: 'Ongoing',
-        title: 'Apna College web dev course on YouTube',
-        description: 'Following the Apna College web development course on YouTube.',
-        icon: <FaAward />
-    }
-];
-
-const hobbies = [
-    { name: 'Cricket', icon: '🏏' },
-    { name: 'Football', icon: '⚽' },
-    { name: 'Chess', icon: '♟️' },
-    { name: 'Carrom', icon: '🎯' },
-    { name: 'Reading Books', icon: '📚' },
-    { name: 'Exploring Science & Tech', icon: '🔬' }
+const changelog = [
+  {
+    version: 'v2027.08',
+    date: 'Expected Graduation',
+    title: 'B.S. in Computer Science',
+    details: 'BMSIT, Bangalore. GPA: 8.6/10.0. Core focus on Data Structures, Algorithms, and System Design.'
+  },
+  {
+    version: 'v2024.11',
+    date: 'Recent Deployment',
+    title: 'Placement Assessment Microservice',
+    details: 'Architected and launched a full-stack assessment platform featuring a Go-based judge service, Docker container pooling, and real-time RabbitMQ orchestration.'
+  },
+  {
+    version: 'v2024.06',
+    date: 'System Upgrade',
+    title: 'Retail ERP & POS Integration',
+    details: 'Shipped a comprehensive ERP solution with live inventory tracking, barcode scanning, and JWT-secured RBAC for shop operations.'
+  },
+  {
+    version: 'v0.100.0',
+    date: 'Milestone',
+    title: 'Algorithmic Mastery',
+    details: 'Successfully cleared 100+ complex problems on LeetCode, optimizing for time and space complexity.'
+  }
 ];
 
 const AboutPage = () => {
-    return (
-        <>
-            <Container fluid className="py-5">
-                {/* --- ABOUT ME SECTION --- */}
-                <Row className="align-items-center mb-5">
-                    <Col md={4} className="text-center mb-4 mb-md-0">
-                        <Image
-                            src={profileImage}
-                            roundedCircle
-                            fluid
-                            className="shadow-lg w-75"
-                        />
-                    </Col>
-                    <Col md={8}>
-                        <h2 className="mb-3">About Me</h2>
-                        <p className="lead">
-                        Fast-learning and motivated software developer with strong coding, teamwork, and time-management skills. Proactive in task organization and workflow planning, with a passion for continuous learning and building efficient software solutions. Seeking opportunities to contribute to impactful real-world projects and grow as a full-stack developer.
-                        </p>
-                    </Col>
-                </Row>
+  return (
+    <div className="py-20">
+      <div className="saas-container">
+        
+        {/* Profile Overview */}
+        <div className="flex flex-col md:flex-row gap-12 items-start mb-20 pb-20" style={{ borderBottom: '1px solid var(--border)' }}>
+          {/* <img 
+            src={profileImage} 
+            alt="Nakul B" 
+            className="saas-avatar"
+            style={{ width: '120px', height: '120px', borderRadius: '24px' }}
+          /> */}
+          <div style={{ maxWidth: '800px' }}>
+            <h1 className="mb-4">System Administrator</h1>
+            <p className="text-xl mb-6">
+              I am a highly motivated software developer focusing on system architecture, algorithmic optimization, and building robust full-stack solutions. I organize my workflow like a production pipeline—prioritizing efficiency, security, and continuous deployment.
+            </p>
+            <div className="flex gap-4">
+              <span className="saas-badge badge-easy flex items-center gap-2"><FiCheckCircle /> Status: Available</span>
+              <span className="saas-badge badge-outline">Location: Bangalore</span>
+            </div>
+          </div>
+        </div>
 
-                {/* --- WHAT I DO SECTION --- */}
-                <div className="my-5">
-                    <h2 className="text-center mb-5">What I Do</h2>
-                    <Row>
-                        {services.map((service, index) => (
-                            <Col md={4} key={index} className="mb-4 text-center">
-                                <Card className="h-100 p-4 shadow-sm service-card">
-                                    {service.icon}
-                                    <h4 className="fw-bold">{service.title}</h4>
-                                    <p>{service.description}</p>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
+        {/* Capabilities Grid */}
+        <div className="mb-20 pb-20" style={{ borderBottom: '1px solid var(--border)' }}>
+          <h2 className="mb-8">System Capabilities</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Object.entries(capabilities).map(([category, skills]) => (
+              <div key={category} className="saas-card" style={{ padding: '24px' }}>
+                <h3 className="text-lg mb-4">{category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map(skill => (
+                    <span key={skill} className="saas-badge badge-outline text-sm py-1 px-3">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-                {/* --- SKILLS SECTION --- */}
-                <div className="my-5">
-                    <h2 className="text-center mb-5">My Tech Arsenal</h2>
-                    <Row>
-                        {Object.keys(skills).map(category => (
-                            <Col md={6} lg={3} key={category} className="mb-4">
-                                <Card className="h-100 p-3 shadow-sm skills-card">
-                                    <h5 className="text-center fw-bold mb-3">{category}</h5>
-                                    {skills[category].map(skill => (
-                                        <div key={skill.name} className="d-flex align-items-center mb-2">
-                                            <span className="skill-icon me-2">{skill.icon}</span>
-                                            <span>{skill.name}</span>
-                                        </div>
-                                    ))}
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
+        {/* Changelog (Journey) */}
+        <div>
+          <h2 className="mb-8">Release Changelog</h2>
+          <div className="flex flex-col gap-6">
+            {changelog.map((log, index) => (
+              <div key={index} className="saas-card flex flex-col md:flex-row gap-6 items-start" style={{ padding: '32px' }}>
+                <div className="flex flex-col gap-1" style={{ minWidth: '150px' }}>
+                  <span className="text-primary font-mono font-bold">{log.version}</span>
+                  <span className="text-sm text-secondary">{log.date}</span>
                 </div>
-
-                {/* --- JOURNEY/TIMELINE SECTION --- */}
-                <div className="my-5">
-                    <h2 className="text-center mb-5">My Journey</h2>
-                    <div className="journey-timeline">
-                        {journey.map((item, index) => (
-                            <Card key={index} className="mb-4 shadow-sm journey-card">
-                                <Card.Body>
-                                    <div className="d-flex align-items-start">
-                                        <div className="journey-icon-wrapper me-3">
-                                            {item.icon}
-                                        </div>
-                                        <div>
-                                            <p className="text-muted mb-1 fs-sm">{item.date}</p>
-                                            <h5 className="fw-bold mb-1">{item.title}</h5>
-                                            <p className="text-muted mb-2">{item.subtitle}</p>
-                                            <p>{item.description}</p>
-                                        </div>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        ))}
-                    </div>
+                <div>
+                  <h3 className="text-xl mb-2">{log.title}</h3>
+                  <p className="text-secondary m-0">{log.details}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-                {/* --- HOBBIES SECTION --- */}
-                <div className="my-5">
-                    <h2 className="text-center mb-5">Beyond the Code</h2>
-                    <Row className="justify-content-center">
-                        {hobbies.map(hobby => (
-                            <Col key={hobby.name} xs="auto" className="text-center mb-3">
-                                <Card className="p-3 shadow-sm hobby-card">
-                                    <span className="hobby-icon">{hobby.icon}</span>
-                                    <span className="mt-2">{hobby.name}</span>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
-                </div>
-
-            </Container>
-        </>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default AboutPage;

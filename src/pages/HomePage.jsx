@@ -1,231 +1,116 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import { motion } from 'framer-motion';
-import { FaJava, FaPython, FaJs, FaReact, FaNodeJs, FaGit, FaGithub, FaDocker } from 'react-icons/fa';
-import { SiMongodb, SiRedis } from 'react-icons/si';
-import profileImage from '../assets/profile.jpg';
+import { FiArrowRight } from 'react-icons/fi';
+import { FaGithub } from 'react-icons/fa';
+import { initialProjects } from '../data/projectsData';
 import cv from '../assets/NAKULB_1BY23CS132.pdf';
-import Footer from '../components/Footer';
-import './HomePage.css';
 
-const heroVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-            duration: 0.8,
-            delay: 0.2,
-            staggerChildren: 0.3
-        }
-    },
+const getBadgeClass = (category) => {
+  if (category.includes('Game')) return 'badge-medium';
+  if (category.includes('Platform') || category.includes('ERP') || category.includes('System')) return 'badge-primary';
+  return 'badge-easy';
 };
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const skills = [
-    { name: "Java", icon: <FaJava size={50} /> },
-    { name: "Python", icon: <FaPython size={50} /> },
-    { name: "JavaScript", icon: <FaJs size={50} /> },
-    { name: "React", icon: <FaReact size={50} /> },
-    { name: "Node.js", icon: <FaNodeJs size={50} /> },
-    { name: "MongoDB", icon: <SiMongodb size={50} /> },
-    { name: "Git", icon: <FaGit size={50} /> },
-    { name: "GitHub", icon: <FaGithub size={50} /> },
-    { name: "Docker", icon: <FaDocker size={50} /> },
-    { name: "Redis", icon: <SiRedis size={50} /> },
-];
-
-const TypingEffect = ({ text, speed, eraseSpeed, eraseDelay }) => {
-    const [displayedText, setDisplayedText] = useState('');
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [loopNum, setLoopNum] = useState(0);
-
-    useEffect(() => {
-        const handleTyping = () => {
-            const i = loopNum % text.length;
-            const fullText = text[i];
-
-            setDisplayedText(
-                isDeleting
-                    ? fullText.substring(0, displayedText.length - 1)
-                    : fullText.substring(0, displayedText.length + 1)
-            );
-
-            if (!isDeleting && displayedText === fullText) {
-                setTimeout(() => setIsDeleting(true), eraseDelay);
-            } else if (isDeleting && displayedText === '') {
-                setIsDeleting(false);
-                setLoopNum(loopNum + 1);
-            }
-        };
-
-        const timer = setTimeout(
-            handleTyping,
-            isDeleting ? eraseSpeed : speed
-        );
-
-        return () => clearTimeout(timer);
-    }, [displayedText, isDeleting, loopNum, text, speed, eraseSpeed, eraseDelay]);
-
-    return <span className="typing-effect">{displayedText}</span>;
-};
-
 
 const HomePage = () => {
-    const particlesInit = async (main) => {
-        await loadFull(main);
-    };
+  // Display only top 3 projects on home page
+  const featuredProjects = initialProjects.slice(0, 3);
 
-    const particlesOptions = {
-        background: {
-            color: { value: 'transparent' },
-        },
-        particles: {
-            color: { value: 'var(--text-color)' },
-            links: {
-                color: 'var(--text-color)',
-                distance: 150,
-                enable: true,
-                opacity: 0.2,
-                width: 1,
-            },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-            },
-            number: {
-                density: { enable: true, area: 800 },
-                value: 50,
-            },
-            opacity: { value: 0.3, anim: { enable: true, speed: 0.5, opacity_min: 0.1 } },
-            shape: { type: "circle" },
-            size: { value: { min: 1, max: 3 }, anim: { enable: true, speed: 2, size_min: 0.5 } },
-        },
-        interactivity: {
-            events: {
-                onHover: { enable: true, mode: "grab" },
-                resize: true,
-            },
-            modes: {
-                grab: {
-                    distance: 150,
-                    line_linked: { opacity: 0.5 }
-                }
-            }
-        },
-    };
-
-    return (
-        <div className="home-page-container">
-            <Particles
-                id="tsparticles"
-                init={particlesInit}
-                options={particlesOptions}
-                className="particles-container"
-            />
-            <motion.div
-                className="home-page-content"
-                variants={heroVariants}
-                initial="hidden"
-                animate="visible"
-            >
-                <Container fluid>
-                    <Row className="align-items-center text-center">
-                        <Col>
-                            <motion.div variants={itemVariants} className="mb-4">
-                                <Image
-                                    src={profileImage}
-                                    roundedCircle
-                                    width={150}
-                                    height={150}
-                                    className="shadow-lg border border-4"
-                                    style={{ borderColor: 'var(--primary)' }}
-                                />
-                            </motion.div>
-
-                            <motion.h1
-                                className="display-4 fw-bold mb-3"
-                                variants={itemVariants}
-                            >
-                                Hey, I'm <span style={{ color: 'var(--primary)' }}>Nakul B</span>
-                            </motion.h1>
-
-                            <motion.div variants={itemVariants} className="mb-4">
-                                <TypingEffect
-                                    text={["Software Developer", "Full Stack Engineer", "Problem Solver"]}
-                                    speed={100}
-                                    eraseSpeed={50}
-                                    eraseDelay={2000}
-                                />
-                            </motion.div>
-
-                            <motion.p
-                                className="lead mb-4"
-                                variants={itemVariants}
-                                style={{ maxWidth: '600px', margin: '0 auto' }}
-                            >
-                                A passionate and creative developer focused on building beautiful and functional web applications.
-                            </motion.p>
-
-                            <motion.div variants={itemVariants} className="d-flex justify-content-center gap-3 mt-4">
-                                <Link to="/contact">
-                                    <Button variant="primary" size="lg">
-                                        Hire Me
-                                    </Button>
-                                </Link>
-                                <a href={cv} download="NakulB_Resume.pdf">
-                                    <Button variant="outline-light" size="lg">
-                                        Download CV
-                                    </Button>
-                                </a>
-                                <Link to="/projects">
-                                    <Button variant="outline-light" size="lg">
-                                        My Work
-                                    </Button>
-                                </Link>
-                            </motion.div>
-                        </Col>
-                    </Row>
-                </Container>
-            </motion.div>
-
-            <motion.div
-                className="skills-section"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.8 }}
-            >
-                <Container>
-                    <h2 className="text-center mb-5">My Skills</h2>
-                    <Row className="justify-content-center">
-                        {skills.map((skill, index) => (
-                            <Col key={index} xs={4} md={2} className="text-center mb-4">
-                                <div className="skill-item">
-                                    {skill.icon}
-                                    <p className="mt-2">{skill.name}</p>
-                                </div>
-                            </Col>
-                        ))}
-                    </Row>
-                </Container>
-            </motion.div>
-            {/* <hr className="footer-divider" />
-            <Footer /> */}
+  return (
+    <div className="py-20">
+      <div className="saas-container">
+        
+        {/* Hero Section */}
+        <div className="flex flex-col items-start mb-20 py-12" style={{ maxWidth: '800px' }}>
+          <h1 className="mb-6" style={{ fontSize: '4.5rem', lineHeight: '1.1' }}>
+            Nakul B.<br/>
+            <span style={{ color: 'var(--text-secondary)' }}>Full Stack Engineer.</span>
+          </h1>
+          <p className="text-xl mb-12" style={{ maxWidth: '600px' }}>
+            I build scalable microservices, robust ERPs, and high-performance assessment platforms. 
+            Focused on secure architecture, intuitive UI, and optimal developer experience.
+          </p>
+          <div className="flex gap-4">
+            <Link to="/projects" className="btn-primary">
+              View Work <FiArrowRight size={18} />
+            </Link>
+            <a href={cv} download className="btn-secondary">
+              Download CV
+            </a>
+          </div>
         </div>
-    );
+
+        {/* Featured Projects Preview */}
+        <div className="mb-12 flex justify-between items-end">
+          <div>
+            <h2 className="mb-2">Featured Systems</h2>
+            <p className="text-secondary">Recent production-grade platforms and applications.</p>
+          </div>
+          <Link to="/projects" className="font-semibold flex items-center gap-2 d-none md:flex">
+            View all projects <FiArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredProjects.map((project, index) => (
+            <div key={index} className="saas-card flex flex-col">
+              <div className="flex justify-between items-start mb-6">
+                <span className={`saas-badge ${getBadgeClass(project.category)}`}>
+                  {project.category.toUpperCase()}
+                </span>
+              </div>
+              <h3 className="mb-3">{project.title}</h3>
+              <p className="flex-grow mb-8 text-sm">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.technologies.slice(0, 4).map(tech => (
+                  <span key={tech} className="saas-badge badge-outline text-sm py-1 px-3">
+                    {tech}
+                  </span>
+                ))}
+                {project.technologies.length > 4 && (
+                  <span className="saas-badge badge-outline text-sm py-1 px-3">
+                    +{project.technologies.length - 4}
+                  </span>
+                )}
+              </div>
+              <div className="mt-auto flex items-center gap-4">
+                {project.liveLink !== '#' && (
+                  <a 
+                    href={project.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-semibold flex items-center gap-2 text-primary-color"
+                    style={{ width: 'max-content' }}
+                  >
+                    View Project <FiArrowRight size={16} />
+                  </a>
+                )}
+                {project.githubLink !== '#' && (
+                  <a 
+                    href={project.githubLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-semibold flex items-center gap-2 text-secondary hover:text-white"
+                    style={{ width: 'max-content', transition: 'color 0.2s' }}
+                  >
+                    GitHub <FaGithub size={16} />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 flex md:hidden justify-center">
+          <Link to="/projects" className="btn-secondary w-full">
+            View all projects
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;

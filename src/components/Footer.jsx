@@ -1,72 +1,46 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import './Footer.css';
-
-const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Nakul-26' },
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/nakul-b-60a3b2290/' },
-];
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+  return (
+    <footer style={{ 
+      borderTop: '1px solid var(--border)', 
+      padding: '40px 0', 
+      marginTop: 'auto'
+    }}>
+      <div className="saas-container">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <span className="font-bold text-primary-color flex items-center gap-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Nakul.dev
+            </span>
+            <p className="text-sm" style={{ color: 'var(--text-secondary)', margin: 0 }}>
+              © {new Date().getFullYear()} Nakul B. All rights reserved.
+            </p>
+          </div>
 
-    return (
-        <footer className="site-footer">
-            <Container>
-                <Row>
-                    <Col md={4} className="footer-about mb-4 mb-md-0">
-                        <h5>
-                            <FaCode className="me-2" />
-                            Nakul B's Portfolio
-                        </h5>
-                        <p>
-                            A passionate and creative developer focused on building beautiful and functional web applications.
-                        </p>
-                    </Col>
-                    
-                    <Col md={{ span: 2, offset: 1 }} sm={6} xs={6} className="footer-links mb-4 mb-md-0">
-                        <h6>Pages</h6>
-                        <ul className="list-unstyled">
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/about">About</Link></li>
-                            <li><Link to="/projects">Projects</Link></li>
-                            <li><Link to="/contact">Contact</Link></li>
-                        </ul>
-                    </Col>
+          <div className="flex gap-4">
+            <a href="https://github.com/Nakul-26" target="_blank" rel="noopener noreferrer" className="saas-icon-btn">
+              <FaGithub size={18} />
+            </a>
+            <a href="https://www.linkedin.com/in/nakul-b-60a3b2290/" target="_blank" rel="noopener noreferrer" className="saas-icon-btn">
+              <FaLinkedin size={18} />
+            </a>
+            <a href="mailto:naul123426@gmail.com" className="saas-icon-btn">
+              <FaEnvelope size={18} />
+            </a>
+          </div>
 
-                    <Col md={2} sm={6} xs={6} className="footer-links mb-4 mb-md-0">
-                        <h6>Contact</h6>
-                        <ul className="list-unstyled">
-                            <li><a href="mailto:nakul123426@gmail.com"><FaEnvelope className="me-2" />Email</a></li>
-                        </ul>
-                    </Col>
-
-                    <Col md={3} className="footer-social">
-                        <h6>Follow Me</h6>
-                        <div className="d-flex">
-                            {socialLinks.map((link, index) => (
-                                <a
-                                    key={index}
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title={`Connect on ${link.name}`}
-                                    className="social-icon"
-                                >
-                                    <link.icon size={28} />
-                                </a>
-                            ))}
-                        </div>
-                    </Col>
-                </Row>
-                <div className="footer-bottom text-center pt-4 mt-4">
-                    <p className="small mb-0">&copy; {currentYear} Nakul B. All Rights Reserved.</p>
-                </div>
-            </Container>
-        </footer>
-    );
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

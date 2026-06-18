@@ -1,91 +1,88 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
-import { FaUnity, FaReact, FaNodeJs, FaCode, FaGithub, FaExternalLinkAlt, FaPalette } from 'react-icons/fa';
-import { SiMongodb, SiGo, SiRedis, SiRabbitmq, SiDocker } from 'react-icons/si';
+import React from 'react';
 import { initialProjects } from '../data/projectsData';
-import './ProjectsPage.css';
-import './HomePage.css'; // For footer-divider style
+import { FiArrowRight } from 'react-icons/fi';
+import { FaGithub } from 'react-icons/fa';
 
-const techIcons = {
-  Unity: <FaUnity />,
-  'C#': <FaCode />,
-  Paint: <FaPalette />,
-  React: <FaReact />,
-  'Node.js': <FaNodeJs />,
-  'MERN Stack': <FaReact />,
-  Go: <SiGo />,
-  Redis: <SiRedis />,
-  RabbitMQ: <SiRabbitmq />,
-  Docker: <SiDocker />,
-  MongoDB: <SiMongodb />,
+// Helper to assign specific badge colors based on tech or category
+const getBadgeClass = (category) => {
+  if (category.includes('Game')) return 'badge-medium';
+  if (category.includes('Platform') || category.includes('ERP') || category.includes('System')) return 'badge-primary';
+  return 'badge-easy';
 };
 
 const ProjectsPage = () => {
-    const [filteredProjects, setFilteredProjects] = useState(initialProjects);
-    const [activeFilter, setActiveFilter] = useState('All');
-
-    const filters = ['All', 'Web Application', 'Game Development'];
-    
-    const handleFilter = (category) => {
-        setActiveFilter(category);
-        if (category === 'All') {
-            setFilteredProjects(initialProjects);
-        } else {
-            setFilteredProjects(initialProjects.filter(p => p.category === category));
-        }
-    };
-
   return (
-    <>
-      <Container fluid className="py-5">
-        <h2 className="text-center mb-4">Projects</h2>
+    <div className="py-20">
+      <div className="saas-container">
         
-        {/* Filter Buttons */}
-        <div className="text-center mb-4">
-          {filters.map(filter => (
-            <Button 
-              key={filter} 
-              variant="outline-primary"
-              onClick={() => handleFilter(filter)}
-              className={`btn-filter me-2 ${activeFilter === filter ? 'active' : ''}`}
-            >
-              {filter}
-            </Button>
+        <div className="mb-12">
+          <h1 className="mb-4">Featured Projects</h1>
+          <p className="text-lg" style={{ maxWidth: '600px' }}>
+            Production-grade systems and platforms. Built with modern architectures, 
+            focusing on scalability, performance, and developer experience.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {initialProjects.map((project, index) => (
+            <div key={index} className="saas-card flex flex-col">
+              
+              <div className="flex justify-between items-start mb-6">
+                <span className={`saas-badge ${getBadgeClass(project.category)}`}>
+                  {project.category.toUpperCase()}
+                </span>
+              </div>
+
+              <h3 className="mb-3">{project.title}</h3>
+              
+              <p className="flex-grow mb-8 text-sm">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.technologies.slice(0, 5).map(tech => (
+                  <span key={tech} className="saas-badge badge-outline text-sm py-1 px-3">
+                    {tech}
+                  </span>
+                ))}
+                {project.technologies.length > 5 && (
+                  <span className="saas-badge badge-outline text-sm py-1 px-3">
+                    +{project.technologies.length - 5}
+                  </span>
+                )}
+              </div>
+
+              <div className="mt-auto flex items-center gap-4">
+                {project.liveLink !== '#' && (
+                  <a 
+                    href={project.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-semibold flex items-center gap-2 text-primary-color"
+                    style={{ width: 'max-content' }}
+                  >
+                    View Project <FiArrowRight size={16} />
+                  </a>
+                )}
+                {project.githubLink !== '#' && (
+                  <a 
+                    href={project.githubLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-semibold flex items-center gap-2 text-secondary hover:text-white"
+                    style={{ width: 'max-content', transition: 'color 0.2s' }}
+                  >
+                    GitHub <FaGithub size={16} />
+                  </a>
+                )}
+              </div>
+
+            </div>
           ))}
         </div>
 
-        <Row>
-          {filteredProjects.map((project, index) => (
-            <Col md={6} lg={4} key={index} className="mb-4">
-              <Card className="h-100 shadow-sm project-card">
-                <Card.Img variant="top" src={project.imageUrl} />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title className="fw-bold">{project.title}</Card.Title>
-                  <div className="mb-2">
-                      {project.technologies.map((tech) => (
-                          <Badge pill bg="secondary" key={tech} className="me-1">
-                              {techIcons[tech]} {tech}
-                          </Badge>
-                      ))}
-                  </div>
-                  <Card.Text className="mt-2">
-                      {project.description}
-                  </Card.Text>
-                  <div className="mt-auto pt-3">
-                      <Button variant="dark" href={project.githubLink} target="_blank" className="me-2">
-                          <FaGithub /> GitHub
-                      </Button>
-                      <Button variant="outline-dark" href={project.liveLink} target="_blank">
-                          <FaExternalLinkAlt /> Live Demo
-                      </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </>
+      </div>
+    </div>
   );
 };
 
