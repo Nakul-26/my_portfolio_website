@@ -1,35 +1,44 @@
 import React, { useState } from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaCalendarAlt } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
 const ContactPage = () => {
   const [formStatus, setFormStatus] = useState(null);
   
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setFormStatus('sending');
 
-    // IMPORTANT: Replace with your own EmailJS credentials
-    const serviceID = 'YOUR_SERVICE_ID';
-    const templateID = 'YOUR_TEMPLATE_ID';
-    const userID = 'YOUR_USER_ID';
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    };
 
-    if (serviceID === 'YOUR_SERVICE_ID' || templateID === 'YOUR_TEMPLATE_ID' || userID === 'YOUR_USER_ID') {
-      setFormStatus('error');
-      console.error("EmailJS credentials are not set. Please update them in ContactPage.jsx");
-      return;
-    }
+    const workerUrl = import.meta.env.VITE_WORKER_API_URL || 'http://127.0.0.1:8787';
 
-    emailjs.sendForm(serviceID, templateID, e.target, userID)
-      .then((result) => {
-          console.log(result.text);
-          setFormStatus('success');
-      }, (error) => {
-          console.log(error.text);
-          setFormStatus('error');
+    try {
+      const response = await fetch(workerUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-    
-    e.target.reset();
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setFormStatus('success');
+        e.target.reset();
+      } else {
+        console.error("Error sending email:", result.error || result);
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error("Network error sending email:", error);
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -51,7 +60,7 @@ const ContactPage = () => {
               <h3 className="mb-6">Send a Message</h3>
               
               <div className="saas-badge badge-medium mb-6" style={{ width: '100%', whiteSpace: 'normal', lineHeight: '1.4' }}>
-                <strong>Note:</strong> To enable email sending, please replace the placeholder credentials in <code>src/pages/ContactPage.jsx</code> with your own from EmailJS.
+                <strong>Note:</strong> Messages are sent securely via a Cloudflare Worker backend powered by Resend.
               </div>
 
               <form onSubmit={sendEmail} className="flex flex-col gap-4">
@@ -77,7 +86,7 @@ const ContactPage = () => {
               </form>
 
               {formStatus === 'success' && <div className="saas-badge badge-easy mt-6 w-full justify-center">Message sent successfully!</div>}
-              {formStatus === 'error' && <div className="saas-badge badge-hard mt-6 w-full justify-center" style={{ whiteSpace: 'normal', textAlign: 'center' }}>Failed to send message. Check EmailJS credentials.</div>}
+              {formStatus === 'error' && <div className="saas-badge badge-hard mt-6 w-full justify-center" style={{ whiteSpace: 'normal', textAlign: 'center' }}>Failed to send message. Please try again later.</div>}
               {formStatus === 'sending' && <div className="saas-badge badge-primary mt-6 w-full justify-center">Sending...</div>}
             </div>
           </div>
@@ -114,9 +123,9 @@ const ContactPage = () => {
               <div style={{ height: '1px', background: 'var(--border)' }}></div>
 
               <div>
-                <h4 className="mb-4">Schedule a Meeting</h4>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="btn-secondary w-full">
-                  <FaCalendarAlt size={16} /> Book a Call
+                <h4 className="mb-4">Quick Chat</h4>
+                <a href="https://wa.me/918762937949" target="_blank" rel="noopener noreferrer" className="btn-secondary w-full" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                  <FaWhatsapp size={18} /> Message on WhatsApp
                 </a>
               </div>
 

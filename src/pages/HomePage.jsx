@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 import { FaGithub } from 'react-icons/fa';
 import { initialProjects } from '../data/projectsData';
-import cv from '../assets/NAKULB_1BY23CS132.pdf';
+import cv from '../assets/NAKUL_1BY23CS132_BMSIT.pdf';
 
 const getBadgeClass = (category) => {
   if (category.includes('Game')) return 'badge-medium';

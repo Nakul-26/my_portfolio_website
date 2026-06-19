@@ -23,7 +23,7 @@ export const initialProjects = [
       imageUrl: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'WhatsApp API'],
       description: "A comprehensive school management platform that automates performance tracking and parent communication. Features a secure multi-tenant architecture, bulk Excel data operations, and automated results distribution via Meta's WhatsApp Cloud API. Implements advanced security measures like JWT refresh token rotation and CSRF protection.",
-      githubLink: "https://github.com/Nakul-26/exam-management-system",
+      githubLink: "https://github.com/Nakul-26/exam-notification-system",
       liveLink: "https://exam-management.pages.dev/"
     },
     {
@@ -32,7 +32,7 @@ export const initialProjects = [
       imageUrl: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Material UI', 'Cloudinary'],
       description: "A full-stack platform for authors to publish novels and readers to discover stories. Features an immersive reading experience, chapter management, and a robust admin dashboard. Implements advanced security measures (CSRF, Rate Limiting, NoSQL injection protection) and utilizes Cloudinary for secure image hosting. Built with a responsive Material UI design.",
-      githubLink: "#",
+      githubLink: "https://github.com/Nakul-26/digital_reading_websites",
       liveLink: "https://digital-reading-websites.pages.dev/"
     },
     {
@@ -41,7 +41,7 @@ export const initialProjects = [
       imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Barcode Scanning'],
       description: "A comprehensive full-stack Retail ERP designed for daily shop operations. Features a real-time analytics dashboard, Point of Sale (POS) with GST handling, automated inventory tracking via barcode scanning, and expense management. Built with a modern responsive UI, secure JWT-based RBAC, and a scalable Node.js/MongoDB backend.",
-      githubLink: "https://github.com/Nakul-26/retail-erp",
+      githubLink: "https://github.com/Nakul-26/Product-management",
       liveLink: "https://product-management-c0p.pages.dev"
     },
     {
