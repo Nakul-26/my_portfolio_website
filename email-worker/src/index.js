@@ -76,7 +76,7 @@ export default {
         },
         body: JSON.stringify({
           from: "Portfolio Contact Form <onboarding@resend.dev>",
-          to: "naul123426@gmail.com",
+          to: "nakul123426@gmail.com",
           reply_to: email,
           subject: `New Message from ${name} via Portfolio`,
           html: `

@@ -97,9 +97,9 @@ const ContactPage = () => {
               
               <div>
                 <h4 className="mb-4">Contact Details</h4>
-                <a href="mailto:naul123426@gmail.com" className="flex items-center gap-3 text-secondary hover:text-white transition-colors mb-2">
+                <a href="mailto:nakul123426@gmail.com" className="flex items-center gap-3 text-secondary hover:text-white transition-colors mb-2">
                   <span className="saas-icon-btn"><FaEnvelope size={16} /></span>
-                  naul123426@gmail.com
+                  nakul123426@gmail.com
                 </a>
               </div>
               

@@ -32,7 +32,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/nakul-b-60a3b2290/" target="_blank" rel="noopener noreferrer" className="saas-icon-btn">
               <FaLinkedin size={18} />
             </a>
-            <a href="mailto:naul123426@gmail.com" className="saas-icon-btn">
+            <a href="mailto:nakul123426@gmail.com" className="saas-icon-btn">
               <FaEnvelope size={18} />
             </a>
           </div>
