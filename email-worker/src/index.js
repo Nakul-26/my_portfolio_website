@@ -1,13 +1,34 @@
+const ALLOWED_ORIGIN_REGEX = /^https?:\/\/localhost:\d+$|^https:\/\/nakul-b\.pages\.dev$|^https:\/\/[a-z0-9-]+\.nakul-b\.pages\.dev$/;
+
+function getCorsHeaders(origin) {
+  const isAllowed = origin && ALLOWED_ORIGIN_REGEX.test(origin);
+  const allowOrigin = isAllowed ? origin : "https://nakul-b.pages.dev";
+  return {
+    "Access-Control-Allow-Origin": allowOrigin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+  };
+}
+
 export default {
   async fetch(request, env, ctx) {
+    const origin = request.headers.get("Origin");
+
     // Handle CORS preflight requests
     if (request.method === "OPTIONS") {
       return new Response(null, {
+        headers: getCorsHeaders(origin),
+      });
+    }
+
+    // Verify Origin is allowed to protect against unauthorized website domains using the worker
+    if (!origin || !ALLOWED_ORIGIN_REGEX.test(origin)) {
+      return new Response(JSON.stringify({ error: "Forbidden: Request origin not allowed" }), {
+        status: 403,
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-          "Access-Control-Max-Age": "86400",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "https://nakul-b.pages.dev",
         },
       });
     }
@@ -17,7 +38,7 @@ export default {
         status: 405,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": origin,
         },
       });
     }
@@ -30,7 +51,7 @@ export default {
           status: 400,
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": origin,
           },
         });
       }
@@ -42,7 +63,7 @@ export default {
           status: 500,
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": origin,
           },
         });
       }
@@ -76,7 +97,7 @@ export default {
           status: resendResponse.status,
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": origin,
           },
         });
       }
@@ -85,7 +106,7 @@ export default {
         status: 200,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": origin,
         },
       });
     } catch (error) {
@@ -93,7 +114,7 @@ export default {
         status: 500,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": origin,
         },
       });
     }
